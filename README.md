@@ -96,3 +96,15 @@ revalidated here. This repository does not import or execute their infrastructur
 The initial uploaded ZIP was inspected and replaced on this branch by reviewable source.
 Its obsolete publishing instructions and unverified historical incident references are not
 carried forward. Original upload remains in Git history. Main is unchanged until review.
+
+## PostgreSQL recovery drill
+
+Run `bash scripts/test-postgres.sh` from the repository root as an unprivileged
+Linux user with matching PostgreSQL server and client tools on PATH. Each case
+starts a temporary cluster on a private Unix socket, restores a custom-format
+dump into a fresh database, and removes the cluster. A separate local ledger
+records acknowledged IDs. The missing-write case commits after the backup and
+must refuse promotion even though the backup passes its checksum. Other cases
+exercise corrupt bytes, an incompatible column, stale data and idempotent replay.
+Reported elapsed time covers local verification and restore only. The ledger
+shares the host and assumes an uninterrupted single writer.
