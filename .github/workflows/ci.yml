@@ -22,3 +22,8 @@ jobs:
         run: make verify
       - name: Healthy restore demonstration
         run: python3 -m reliability
+      - name: Exercise PostgreSQL restore and reconciliation
+        run: |
+          export PATH="/usr/lib/postgresql/16/bin:$PATH"
+          postgres --version
+          bash scripts/test-postgres.sh

@@ -44,3 +44,10 @@ create issues and a feature branch returned 403. This file records local evidenc
 publication must be confirmed independently, never inferred from prepared source or a draft PR
 body. Review source and any CI status before merging. No operation in this lab provisions
 paid cloud resources.
+
+## PostgreSQL follow-up
+
+Native PostgreSQL scripts implemented. Both passed Bash syntax checks. PostgreSQL 16.2
+binaries were available, but this environment maps only UID 0. It cannot launch initdb as
+an unprivileged user. End-to-end PostgreSQL validation is pending. The workflow now calls
+the five-scenario suite on a GitHub-hosted Ubuntu runner. No remote CI result is available.

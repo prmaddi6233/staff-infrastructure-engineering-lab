@@ -28,7 +28,7 @@ No remote CI pass is claimed until a GitHub run confirms it. Mermaid rendering n
 
 ## Alternatives and risks
 
-SQLite enables free, dependency-free review; PostgreSQL integration is the next milestone.
+SQLite enables free, dependency-free review; The new PostgreSQL integration drill awaits an unprivileged execution environment.
 Local restore duration is not end-to-end DR RTO, and recovery-point age is not observed loss.
 Checksums do not provide authenticity; independently trusted signed provenance remains work.
 AWS account isolation, KMS, regional restores, SLO telemetry and Kubernetes drills are proposed.
@@ -46,3 +46,5 @@ Historical incident assertions and obsolete publishing instructions in the start
 Revert this source change. The deleted ZIP remains in baseline Git history. No deployed
 infrastructure, persistent demo data or database migration needs rollback. Do not merge
 automatically. Issue creation / branch publication must be verified with GitHub.
+
+PostgreSQL follow-up adds five native scenarios and a CI step. Bash syntax passed; end-to-end execution is pending.

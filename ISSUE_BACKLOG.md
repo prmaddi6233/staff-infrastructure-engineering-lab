@@ -4,16 +4,13 @@ Prepared 2026-11-04. GitHub issue creation was attempted but rejected with HTTP 
 `Resource not accessible by integration`. No GitHub issue numbers or URLs are claimed.
 B01–B07 are local backlog identifiers, not GitHub issues. Completed foundation work is excluded.
 
-## B01 — P1: PostgreSQL restore and acknowledgement reconciliation
+## B01 — P1: Verify PostgreSQL integration on an unprivileged runner
 
-Owner: platform + application. Depends on: local foundation in this change.
-Problem: SQLite cannot establish PostgreSQL transaction or replay correctness.
-Acceptance: disposable container workflow creates synthetic acknowledged messages, backs up,
-restores to a new database and reconciles a separately stored acknowledgement ledger.
-Test missing acknowledged IDs, stale backup, duplicate replay and schema mismatch.
-Pin container digest and document engine version.
-Verification: one local command reports reconciliation and measured timing scope, exits nonzero
-for unsafe restoration, and cleans volumes on success/failure. No cloud services.
+Owner: platform + application. Depends on: an unprivileged Linux runtime with PostgreSQL 16.
+The native PostgreSQL drill and five scenario checks are implemented. Runtime verification
+is outstanding. Run `bash scripts/test-postgres.sh`, retain server version, exit codes and
+proof of cleanup. Review missing-write IDs against the external ledger. Add pinned-container
+reproduction and validate the same results before closing this item.
 
 ## B02 — P1: Enforce main-branch review and CI requirements
 
